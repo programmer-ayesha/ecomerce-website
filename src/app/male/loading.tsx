@@ -1,5 +1,3 @@
-// import LoadingComponent from "@/components/ui/LoadingComponent"
-
 import LoadingComponent from "@/components/ui/LoadingComponents"
 
 const Loading = () => {

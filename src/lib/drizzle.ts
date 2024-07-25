@@ -1,38 +1,23 @@
-// // import {drizzle} from "drizzle-orm/vercel-postgres";
-// // import { sql } from "@vercel/postgres";
-// // import {InferModel} from "drizzle-orm"
-// // import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
-
-
-// //  export const cartTable = pgTable("basitcart", {
-// //     userid: varchar ("userid", {length: 255}).notNull(),
-// //     productid: varchar ("productid", {length: 255}).notNull(),
-// //     quantity: integer("quantity"),
-// // });
- 
-// // export type typeofCart = InferModel <typeof cartTable>
-
-// // export const db = drizzle(sql);
-
-// import { drizzle } from "drizzle-orm/vercel-postgres";
+// import {drizzle} from "drizzle-orm/vercel-postgres";
 // import { sql } from "@vercel/postgres";
 // import {InferModel} from "drizzle-orm"
 // import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 
-// export const cartTable = pgTable("basitcart", {
-//   userid: varchar("userid", { length: 255 }).notNull(),
-//   productid: varchar("productid", { length: 255 }).notNull(),
-//   quantity: integer("quantity"),
-// });
 
-// export type typeOfCart = InferModel<typeof cartTable>
+//  export const cartTable = pgTable("basitcart", {
+//     userid: varchar ("userid", {length: 255}).notNull(),
+//     productid: varchar ("productid", {length: 255}).notNull(),
+//     quantity: integer("quantity"),
+// });
+ 
+// export type typeofCart = InferModel <typeof cartTable>
 
 // export const db = drizzle(sql);
 
-
 import { drizzle } from "drizzle-orm/vercel-postgres";
 import { sql } from "@vercel/postgres";
-import { pgTable, varchar, integer } from "drizzle-orm/pg-core";
+import {InferModel} from "drizzle-orm"
+import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 
 export const cartTable = pgTable("basitcart", {
   userid: varchar("userid", { length: 255 }).notNull(),
@@ -40,6 +25,6 @@ export const cartTable = pgTable("basitcart", {
   quantity: integer("quantity"),
 });
 
-export type typeOfCart = typeof cartTable;
+export type typeOfCart = InferModel<typeof cartTable>
 
 export const db = drizzle(sql);

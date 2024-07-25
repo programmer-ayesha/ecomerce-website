@@ -1,18 +1,17 @@
 "use client"
 import ProductGridViewer from "@/components/Views/ProductGridViewer";
 import { searchProductsFromSanity } from "@/components/utils/apicalling";
-// import searchProductsFromSanity from "@components/utils/apicalling"
 import { allProductFetherFromSanityType } from "@/components/utils/types";
 import { redirect, useSearchParams } from "next/navigation"
 
-const Search = () => {
-    const params =  useSearchParams();
+const Search = async () => {
+    const params = useSearchParams();
 
     if (!params.has("query")) redirect("/products")
 
     const searchValue = params.get("query") as string;
 
-    const data = searchProductsFromSanity(searchValue) as unknown as allProductFetherFromSanityType;
+    const data = await searchProductsFromSanity(searchValue) as allProductFetherFromSanityType;
 
     return (
         <div className="py-4">
@@ -24,4 +23,3 @@ const Search = () => {
 }
 
 export default Search
-

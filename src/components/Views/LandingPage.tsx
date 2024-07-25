@@ -1,51 +1,47 @@
-import { ArrowRight } from "lucide-react";
-import { Button, buttonVariants } from "../ui/button";
-import Image from "next/image";
+import { ArrowRight } from "lucide-react"
+import { Button, buttonVariants } from "../ui/button"
+import Image from "next/image"
 
 const LandingPage = () => {
-  return (
-    <div className="relative min-h-screen w-full">
-      {/* Full-Screen Image */}
-      <Image 
-        src="/gul2.jpg" 
-        alt="Clothing" 
-        layout="fill" 
-        objectFit="cover" 
-        className="z-0"
-      />
+    return (
+        <div className="flex flex-col text-center md:text-start gap-6 md:gap-0 md:flex-row justify-between items-center container py-10 xl:py-14">
+            <div className="space-y-9">
+                <p className="text-sm text-gray-700">--Clothing</p>
+                <h1 className="max-w-lg xl:max-w-2xl text-4xl md:text-5xl xl:text-[50px] font-bold text-gray-700 ">
+                    Style is a way to say who you are without having to speak.
+                </h1>
+                <p className="max-w-md">Anyone can beat you but no one can beat your outfit as long as you wear Emily Outfits</p>
+                <div className="space-x-5">
+                    <Button className={buttonVariants({
+                        variant: "outline",
+                        size: "lg"
+                    })}>
+                        Explore cloths
+                    </Button>
+                    <Button
+                        className={buttonVariants({
+                            variant: "ghost",
+                            size: "lg",
+                        })}
+                    >
+                        Get started&nbsp;
+                        <ArrowRight size={17} />
+                    </Button>
+                </div>
+            </div>
+            <div className="rounded-xl bg-gray-100 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+  <Image
+    src={"/girl.jpg"}
+    alt="Clothing"
+    width={1000} 
+    height={1000}
+    className="flex-grow w-full h-96 lg:h-[28rem] xl:h-[34rem] object-cover rounded-xl"
+  />
+</div>
+</div>
 
-      {/* Overlay with content */}
-      <div className="absolute inset-0 flex flex-col justify-center items-start text-left gap-6 p-10 z-10 -opacity-50">
-        <div className="space-y-9  bg-opacity-75 p-10 rounded-lg">
-          <p className="text-sm text-gray-700">--Clothing</p>
-          <h1 className="max-w-lg xl:max-w-2xl text-4xl md:text-5xl xl:text-[50px] font-bold text-gray-700">
-            {/* Make a statement without saying a word. */}
-          </h1>
-          <p className="max-w-md text-gray-700">
-            {/* While anyone can compete with you, your outfit will always be unmatched and unique. Discover and find your perfect look with our curated collection. */}
-          </p>
-          {/* <div className="space-x-5">
-            <Button className={buttonVariants({
-              variant: "outline",
-              size: "lg"
-            })}>
-              Explore clothes
-            </Button>
-            <Button
-              className={buttonVariants({
-                variant: "ghost",
-                size: "lg",
-              })}
-            >
-              Get started&nbsp;
-              <ArrowRight size={17} />
-            </Button> */}
-          </div>
-        </div>
-      </div>
-    // </div>
-  );
-};
+        
+    )
+}
 
-export default LandingPage;
-
+export default LandingPage

@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import {  Playfair_Display } from "next/font/google";
 
 import "./globals.css";
 import Navbar from "@/components/Views/Navbar";
 import Wrapper from "@/components/Views/Wrapper";
 import Footer from "@/components/Views/Footer";
+import { Playfair_Display } from 'next/font/google'; // Ensure this import is correct and matches your setup
+import { Metadata } from "next";
 
-const playFairDisplay_inter = Playfair_Display({ subsets: ["latin"],variable:'--font-playfairdisplay' }); 
+const playFairDisplay_inter = Playfair_Display({ subsets: ["latin"], variable: '--font-playfairdisplay' });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,18 +15,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={playFairDisplay_inter.variable}>
-        <Navbar />
+
+<Navbar />
         <Wrapper>
-        {children}
+          {children}
         </Wrapper>
         <Footer />
-        </body>
+      </body>
     </html>
   );
 }
+
+// initialUser={null}

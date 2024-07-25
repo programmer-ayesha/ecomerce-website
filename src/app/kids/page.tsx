@@ -2,7 +2,6 @@ import ProductGridViewer from "@/components/Views/ProductGridViewer";
 import { kidsProductsFromSanity } from "@/components/utils/apicalling";
 import { allProductFetherFromSanityType } from "@/components/utils/types";
 
-
 const Kids = async () => {
     const data = await kidsProductsFromSanity() as allProductFetherFromSanityType;
 

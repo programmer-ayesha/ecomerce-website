@@ -1,5 +1,3 @@
-
-
 import { FC } from "react"
 import { singleProductType } from "../utils/types"
 import Image from "next/image"
@@ -9,7 +7,10 @@ import { urlForImage } from "../../../sanity/lib/image"
 
 const ProductCard: FC<{ product: singleProductType }> = ({ product }) => {
     return (
+
+        
         <div className="p-4 w-full md:w-1/3">
+            
             <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
                 <Image
                     className=" lg:h-48 md:h-36 w-full object-cover object-center"

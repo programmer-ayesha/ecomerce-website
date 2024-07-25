@@ -5,6 +5,7 @@ import LoadingComponent from "@/components/ui/LoadingComponents";
 import { addProductFatcherFromSanity } from "@/components/utils/apicalling";
 import { allProductFetherFromSanityType } from "@/components/utils/types";
 import { Suspense } from 'react';
+
 export default async function Home() {
 
   return <>
@@ -17,7 +18,6 @@ export default async function Home() {
     <ShopDetails />
   </>
 }
-
 
 async function Carousel() {
   let data = await addProductFatcherFromSanity() as allProductFetherFromSanityType;
