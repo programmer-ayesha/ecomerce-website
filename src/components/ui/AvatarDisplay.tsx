@@ -60,6 +60,8 @@ export function DropdownMenuDemo({UserData}:{UserData:KindeUser}) {
                     <LogoutLink>Log out</LogoutLink>
                 </DropdownMenuItem>
             </DropdownMenuContent>
-        </DropdownMenu>
+            {/* </DropdownMenu> */}
+            </DropdownMenu>
     )
+
 };  
