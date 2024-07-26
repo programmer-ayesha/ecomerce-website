@@ -39,12 +39,12 @@ export function DropdownMenuDemo({UserData}:{UserData:KindeUser}) {
             <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuItem>
-                    {/* <User className="mr-2 h-4 w-4" /> 
+                    <User className="mr-2 h-4 w-4" /> 
                     <span>{UserData.given_name}{" "}{UserData.family_name}</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                     <Mail className="mr-2 h-4 w-4" /> 
-                    <span>{UserData.email}</span> */}
+                    <span>{UserData.email}</span>
                  </DropdownMenuItem> 
                 <DropdownMenuItem>
                     <Github className="mr-2 h-4 w-4" />

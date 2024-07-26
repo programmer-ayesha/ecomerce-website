@@ -4,8 +4,10 @@ import { singleProductType } from '../utils/types'
 import { urlForImage } from '../../../sanity/lib/image';
 import PortableText from 'react-portable-text';
 import Image from 'next/image';
+import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types';
+import { addToCartApiCall } from '../utils/apicalling';
 
-const BriefProduct = ({ product }: { product: singleProductType }) => {
+const BriefProduct = ({ product }: { product: singleProductType  }) => {
   const [size, setsize] = useState<string>(product.size[0]);
   const [activeImageUrl, setActiveImageUrl] = useState<string>(urlForImage(product.image[0]) as string)
   const [imagesArray, setImagesArray] = useState<string[]>(() => {
@@ -14,6 +16,16 @@ const BriefProduct = ({ product }: { product: singleProductType }) => {
 
     })
   });
+
+// async function hadleAddToCart(){
+//   if(user){
+//     await addToCartApiCall(user.id as string,product._id)
+//     alert('Done')
+//   } else{
+
+//   }
+// }
+
   return (
     <section className="text-gray-600 body-font overflow-hidden space-">
       <div className="container px-5 py-24 mx-auto">
@@ -98,7 +110,7 @@ const BriefProduct = ({ product }: { product: singleProductType }) => {
             </div>
             <div className="flex">
               <span className="title-font font-medium text-2xl text-gray-900">{"$"}{product.price}{".00"}</span>
-              <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add To Cart</button>
+              <button aria-label='this will add to cart'  className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add To Cart</button>
 
             </div>
           </div>

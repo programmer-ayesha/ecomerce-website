@@ -27,6 +27,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const slug = params.slug;
     const data = await detailOfSingleProductFromSanity(slug) as allProductFetherFromSanityType;
+    
 
     if (!data || !data.result || data.result.length === 0) {
         console.error("Failed to fetch product details:", data);
