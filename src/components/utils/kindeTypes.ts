@@ -1,10 +1,11 @@
-// Adjust the type definition in kindeTypes.ts
+// // Adjust the type definition in kindeTypes.ts
+// // "@/components/utils/kindeTypes.ts" file me
+
 export interface KindeUser {
-    id: string;
-    email: string | null;
-    given_name: string;
-    family_name: string;
-    picture?: string;
-  }
+  given_name: string;
+  family_name: string;
+  email: string | null;  // Update to string | null
+}
+
   
   
