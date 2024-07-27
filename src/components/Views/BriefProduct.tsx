@@ -1,13 +1,14 @@
 "use client"
-import React, { useState } from 'react'
-import { singleProductType } from '../utils/types'
-import { urlForImage } from '../../../sanity/lib/image';
-import PortableText from 'react-portable-text';
 import Image from 'next/image';
-import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types';
+import { useState } from 'react';
+import PortableText from 'react-portable-text';
+import { urlForImage } from '../../../sanity/lib/image';
+import { Toaster } from '../ui/toaster';
+import { useToast } from '../ui/use-toast';
 import { addToCartApiCall } from '../utils/apicalling';
+import { singleProductType } from '../utils/types';
 
-const BriefProduct = ({ product }: { product: singleProductType  }) => {
+const BriefProduct = ({ product, user }: { product: singleProductType, user: any }) => {
   const [size, setsize] = useState<string>(product.size[0]);
   const [activeImageUrl, setActiveImageUrl] = useState<string>(urlForImage(product.image[0]) as string)
   const [imagesArray, setImagesArray] = useState<string[]>(() => {
@@ -16,18 +17,28 @@ const BriefProduct = ({ product }: { product: singleProductType  }) => {
 
     })
   });
+  const { toast } = useToast();
 
-// async function hadleAddToCart(){
-//   if(user){
-//     await addToCartApiCall(user.id as string,product._id)
-//     alert('Done')
-//   } else{
-
-//   }
-// }
+  async function hadleAddToCart() {
+    if (user) {
+      await addToCartApiCall(user.id as string, product._id);
+      toast({
+        title: "Sucessfull",
+        description: "Added to Cart Sucessfully",
+      })
+      console.log("hoh")
+    } else {
+      toast({
+        title: "Unucessfull",
+        description: "Can not add to Cart Sucessfully",
+        variant: "destructive"
+      })
+    }
+  }
 
   return (
     <section className="text-gray-600 body-font overflow-hidden space-">
+      <Toaster />
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <div className="lg:w-1/2 w-full space-y-5">
@@ -110,7 +121,7 @@ const BriefProduct = ({ product }: { product: singleProductType  }) => {
             </div>
             <div className="flex">
               <span className="title-font font-medium text-2xl text-gray-900">{"$"}{product.price}{".00"}</span>
-              <button aria-label='this will add to cart'  className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add To Cart</button>
+              <button onClick={hadleAddToCart} aria-label='this will add to cart' className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add To Cart</button>
 
             </div>
           </div>

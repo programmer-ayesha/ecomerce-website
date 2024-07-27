@@ -4,6 +4,7 @@ import BriefLoadingSkeleton from "@/components/ui/BriefLoadingSkeleton";
 import LoadingComponent from "@/components/ui/LoadingComponents";
 import { addProductFatcherFromSanity, detailOfSingleProductFromSanity } from "@/components/utils/apicalling";
 import { allProductFetherFromSanityType, singleProductType } from "@/components/utils/types";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Suspense } from "react";
 
 export async function generateStaticParams() {
@@ -27,7 +28,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const slug = params.slug;
     const data = await detailOfSingleProductFromSanity(slug) as allProductFetherFromSanityType;
-    
+
 
     if (!data || !data.result || data.result.length === 0) {
         console.error("Failed to fetch product details:", data);
@@ -56,6 +57,9 @@ const Brief = async ({ params }: { params: { slug: string } }) => {
 }
 
 async function Detail({ slug }: { slug: string }) {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+
     const [productData, allProductsData] = await Promise.all([
         detailOfSingleProductFromSanity(slug),
         addProductFatcherFromSanity(),
@@ -73,8 +77,8 @@ async function Detail({ slug }: { slug: string }) {
 
     return (
         <>
-            <BriefProduct product={productData.result[0]} />
+            <BriefProduct user={user} product={productData.result[0]} />
             <ProductGridViewer ProductData={allProductsData.result.slice(0, 3)} />
         </>
     );
-}export default Brief;
+} export default Brief;
